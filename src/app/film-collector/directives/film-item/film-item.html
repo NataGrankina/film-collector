@@ -1,0 +1,13 @@
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="{{ film.poster }}">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{ film.title }}</h4>    
+    {{ film.year.join(', ') }} <span class="label label-info">{{ film.subsection }}</span> <br/>
+    <span > {{ film.country.join(', ') }} </span> <br/>
+    <span> {{ film.genres.join(', ') }} </span>
+  </div>
+</div>

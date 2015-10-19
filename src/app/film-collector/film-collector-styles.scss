@@ -1,0 +1,36 @@
+@mixin film-button($right) {
+  display: inline-block;
+        opacity: 0;    
+        position: absolute;
+        right: $right;
+        top: 5px;
+        text-align: center;
+        vertical-align: middle;
+        margin: 0 5px;
+        transition: opacity .2s .2s ease-in-out;
+        cursor: pointer;
+}
+
+li{
+    .film-delete {
+        @include film-button(5px);
+    }
+    &:hover {
+        .film-delete{
+            opacity: 1;
+        }
+    }
+
+    .film-eye {
+        @include film-button(30px);
+    }
+    &:hover {
+        .film-eye{
+            opacity: 1;
+        }
+    }
+}
+
+.search-container {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,11 @@
+<div class="search-container">
+	<div class="input-group">
+ 		<i class="fa fa-search input-group-addon" id="search"></i> 	
+ 		<input type="text" class="form-control" ng-model="vm.searchText" ng-change="vm.searchFilms()" ng-model-options="{ debounce: 500 }" placeholder="search for films..." aria-describedby="search">
+ 		<span class="input-group-addon"><a><i class="fa fa-times" ng-click="vm.clearSearch()"></i></a></span>
+	</div>
+	<div class="list-group">
+  		<a href="#" ng-repeat="result in vm.searchResults" class="list-group-item"><fc-film-item ng-click="vm.addToWatchList(result)" film="result" /></a> 
+	</div>
+</div>
+

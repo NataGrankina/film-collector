@@ -1,0 +1,8 @@
+<ul class="list-group">
+	<li ng-repeat="film in vm.filmCollection | orderBy:'title'" class="list-group-item">
+		<i class="fa fa-times fa-2 film-delete" ng-click="vm.removeFilm(film)"></i> 
+		<i class="fa fa-eye fa-2 film-eye" ng-hide="film.isViewed" ng-click="vm.switchList(film)"></i>
+		<i class="fa fa-eye-slash fa-2 film-eye" ng-show="film.isViewed" ng-click="vm.switchList(film)"></i>
+  		<fc-film-item film="film" />
+  	</li>
+</ul>
