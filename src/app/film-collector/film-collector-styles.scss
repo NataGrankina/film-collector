@@ -11,7 +11,22 @@
         cursor: pointer;
 }
 
-li{
+div[dnd-list] {
+    min-height: 100px;
+    background-color: rgb(221, 221, 221);
+    
+    .dndDraggingSource {
+        display: none;
+    }
+
+    .dndPlaceholder {
+        background-color: rgb(221, 221, 221);
+        min-height: 100px;
+        text-align: center;
+    }
+}
+
+a {
     .film-delete {
         @include film-button(5px);
     }
@@ -34,3 +49,5 @@ li{
 .search-container {
     margin-bottom: 20px;
 }
+
+

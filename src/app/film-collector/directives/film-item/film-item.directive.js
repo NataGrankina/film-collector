@@ -1,6 +1,9 @@
-angular
-	.module('filmCollector')
-	.directive('fcFilmItem', directive);
+(function() {
+    'use strict';
+
+	angular
+		.module('filmCollector')
+		.directive('fcFilmItem', directive);
 
 	function directive() {
 		return {
@@ -11,3 +14,4 @@ angular
 			templateUrl: 'app/film-collector/directives/film-item/film-item.html'
 		};
 	}
+})();

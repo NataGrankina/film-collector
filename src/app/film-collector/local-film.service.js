@@ -15,7 +15,7 @@
             if (_.some($localStorage.films, { link: film.link })) return false;
 
             film.isViewed = false;
-    		$localStorage.films.push(film);
+    		$localStorage.films.unshift(film);
 
             notifyFilmCollectionChanged();
             return true;
@@ -41,11 +41,24 @@
             notifyFilmCollectionChanged();
         }
 
-        function switchList(link) {
+        function moveFilm(link, newIndexInList, switchList) {
             var film = _.find($localStorage.films, function(item) {
                 return item.link === link;
             });
-            film.isViewed = !film.isViewed;
+
+            remove(link);
+
+            if (switchList) film.isViewed = !film.isViewed;
+
+            if (!newIndexInList) $localStorage.films.unshift(film);
+            else {
+                var filmList = _.filter($localStorage.films, function(item) {
+                    return item.isViewed === film.isViewed;
+                });
+
+                var newIndex = _.indexOf($localStorage.films, filmList[newIndexInList - 1]) + 1;
+                $localStorage.films.splice(newIndex, 0, film);
+            }
 
             notifyFilmCollectionChanged();
         }
@@ -55,7 +68,7 @@
             getWatchList: getWatchList,
             getViewedList: getViewedList,
             remove: remove,
-            switchList: switchList
+            moveFilm: moveFilm
     	};
     }
 })();

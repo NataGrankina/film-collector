@@ -1,8 +1,15 @@
-<ul class="list-group">
-	<li ng-repeat="film in vm.filmCollection | orderBy:'title'" class="list-group-item">
+<div class="list-group" 
+	dnd-list="vm.filmCollection" 
+	dnd-drop="vm.dropFilm(item.link, index)">	
+	<a href="#" 
+		ng-repeat="film in vm.filmCollection" 
+		class="list-group-item"
+		dnd-draggable="film" d
+		nd-effect-allowed="move">
 		<i class="fa fa-times fa-2 film-delete" ng-click="vm.removeFilm(film)"></i> 
-		<i class="fa fa-eye fa-2 film-eye" ng-hide="film.isViewed" ng-click="vm.switchList(film)"></i>
-		<i class="fa fa-eye-slash fa-2 film-eye" ng-show="film.isViewed" ng-click="vm.switchList(film)"></i>
+		<i class="fa fa-eye fa-2 film-eye" ng-hide="film.isViewed" ng-click="vm.switchList(film.link)"></i>
+		<i class="fa fa-eye-slash fa-2 film-eye" ng-show="film.isViewed" ng-click="vm.switchList(film.link)"></i>
   		<fc-film-item film="film" />
-  	</li>
-</ul>
+  	</a>
+  	<a class="dndPlaceholder list-group-item"></a>
+</div>
