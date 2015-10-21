@@ -3,9 +3,9 @@
 
    angular
       .module('filmCollector')
-      .controller('filmCollectionControler', ['localFilmService', 'lodash', controller]);
+      .controller('filmCollectionControler', ['localFilmService', 'lodash', 'fstoFilmProvider', controller]);
 
-   function controller(localFilmService, _) {
+   function controller(localFilmService, _, fstoFilmProvider) {
       var vm = angular.extend(this, { 
         removeFilm: removeFilm,
         switchList: switchList,

@@ -1,0 +1,17 @@
+<div>
+	<div href="#" ng-click="vm.toggle()">
+	<h5>
+		<i class="fa fa-folder" ng-hide="vm.isExpanded"></i>
+		<i class="fa fa-folder-open" ng-show="vm.isExpanded"></i>
+		Folders and files
+	</h5>
+	</div>
+	<treecontrol 
+		class="tree-classic" 
+		ng-show="vm.isExpanded"
+		tree-model="vm.children" 
+		options="vm.treeOptions" 
+		on-node-toggle="vm.toggle(node)">
+	    <fc-tree-node node="node" />
+	 </treecontrol>
+</div>

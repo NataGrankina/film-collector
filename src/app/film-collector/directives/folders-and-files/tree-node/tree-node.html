@@ -1,0 +1,18 @@
+<div class="tree-node" ng-switch="" on="node.type">
+	<div class="tree-node" ng-switch-when="folder">		
+		<div class="tree-node-title">
+			<fc-flag language="node.language"></fc-flag>
+			<b>{{ node.title }}</b></div>			
+		<div class="tree-node-details">
+			<span>{{ node.details }}</span>
+			<span>{{ node.date }}</span>
+		</div>
+	</div>
+	<div class="tree-node" ng-switch-when="file">
+	    <div class="tree-node-title">
+	    	<span ng-if="node.quality" class="label label-success">{{ node.quality }}</span>
+	    	<a ng-if="node.reference" href="{{node.reference}}" target="_blank"><i class="fa fa-play-circle-o"></i></a>
+	    	<span>{{ node.title }}</span>
+	    </div>
+    </div>
+</div>

@@ -33,11 +33,16 @@ function browserSyncInit(baseDir, browser) {
    *
    * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.0.5/README.md
    */
-  server.middleware = proxyMiddleware('/search', 
-    {
+  server.middleware = [
+    proxyMiddleware('/video', {
       target: 'http://fs.to', 
       proxyHost: 'fs.to'
-  });
+    }),
+    proxyMiddleware('/search', {
+      target: 'http://fs.to', 
+      proxyHost: 'fs.to'
+    })
+  ];
 
   browserSync.instance = browserSync.init({
     startPath: '/',
