@@ -27,7 +27,7 @@
             function retrieveFolderInfo(item) {
                 var folder = {};
                 folder.type = "folder";
-                var a = item.querySelector("a.title");
+                var a = $(item).find("a.title")[0];
                 folder.title = a.text.trim();
                 folder.id = /[0-9]+/.exec(a.rel)[0];
 
@@ -50,22 +50,29 @@
                 var file = {};
                 file.type = "file";
 
-                var qualitySpan = fileItem.querySelector("span.video-qulaity");
-                if (qualitySpan)
-                    file.quality = fileItem.querySelector("span.video-qulaity").innerHTML;
+                var qualitySpans = $(fileItem).find("span.video-qulaity");
+                if (_.some(qualitySpans))
+                    file.quality = qualitySpans[0].innerHTML;
 
                 file.title = "";
-                var titleSpan = fileItem.querySelector("span.b-file-new__link-material-filename")
-                    ||  fileItem.querySelector("span.b-file-new__material-filename");
-                var titleSpans = titleSpan
-                    .querySelectorAll("span");
+                var titleSpan = $(fileItem).find("span.b-file-new__link-material-filename")[0]
+                    ||  $(fileItem).find("span.b-file-new__material-filename")[0];
+                var titleSpans = $(titleSpan).find("span");
 
                 _.forEach(titleSpans, function(span) {
                     file.title += span.innerHTML.trim() + " ";
                 });
 
-                var reference = fileItem.querySelector("a.b-file-new__link-material");
-                if (reference) file.reference = config.filmHostUrl + reference.getAttribute("href");
+                var reference = $(fileItem).find("a.b-file-new__link-material")[0];
+                if (reference) {
+                    file.reference = config.filmHostUrl + reference.getAttribute("href");
+                }
+
+                var downloadReference = $(fileItem).find("a.b-file-new__link-material-download")[0];
+                if (downloadReference) {
+                    file.downloadReference = config.filmHostUrl + downloadReference.getAttribute("href");
+                    file.size = $(fileItem).find("span.b-file-new__link-material-size")[0].innerHTML;
+                }
 
                 return file;
             }

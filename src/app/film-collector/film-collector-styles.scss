@@ -68,6 +68,11 @@ a {
         width: 90%;
     }
 
+    .film-download {
+        display: inline-block;
+        float: right;
+    }
+
     .flag {
         width: 16px;
         height: 11px;
@@ -83,6 +88,10 @@ a {
     .flag.flag-us {
         background-position: -16px -11px;
     }
+}
+treecontrol.tree-classic li .tree-selected {
+        background-color: inherit;
+        font-weight: inherit;
 }
 
 
