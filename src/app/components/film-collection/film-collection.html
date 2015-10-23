@@ -6,7 +6,7 @@
 		class="list-group-item"
 		dnd-draggable="film" 
 		dnd-effect-allowed="move"
-		ng-focus="vm.selectedFilm = film">
+		ng-click="vm.selectFilm(film)">
 		<i class="fa fa-times fa-2 film-delete" ng-click="vm.removeFilm(film)"></i> 
 		<i class="fa fa-eye fa-2 film-eye" ng-hide="film.isViewed" ng-click="vm.switchList(film.link)"></i>
 		<i class="fa fa-eye-slash fa-2 film-eye" ng-show="film.isViewed" ng-click="vm.switchList(film.link)"></i>
@@ -14,7 +14,7 @@
 			<fc-film-item film="film" />
 		</div>
 		<div ng-show="vm.selectedFilm === film">
-			<fc-folders-and-files film-link="film.link" />
+			<fc-film-item-details film="film" />
 		</div>  	
   	</a>
   	<a class="dndPlaceholder list-group-item"></a>

@@ -6,6 +6,7 @@
       .controller('searchFilmsController', ['fstoFilmProvider', 'localFilmService', controller]);
 
     function controller(fstoFilmProvider, localFilmService) {
+
       var vm = angular.extend(this, { 
         searchText: '',
         searchFilms: searchFilms,

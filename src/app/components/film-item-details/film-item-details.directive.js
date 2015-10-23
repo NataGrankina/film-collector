@@ -3,15 +3,15 @@
 
 	angular
 		.module('filmCollector')
-		.directive('fcTreeNode', directive);
+		.directive('fcFilmItemDetails', directive);
 
 	function directive() {
 		return {
 			restrict: 'E',
 			scope: {
-				node: '='
+				film: '='
 			},
-			templateUrl: 'app/film-collector/directives/folders-and-files/tree-node/tree-node.html'
+			templateUrl: 'app/components/film-item-details/film-item-details.html'
 		};
 	}
 })();

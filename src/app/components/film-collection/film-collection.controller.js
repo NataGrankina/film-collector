@@ -3,13 +3,15 @@
 
    angular
       .module('filmCollector')
-      .controller('filmCollectionControler', ['localFilmService', 'lodash', 'fstoFilmProvider', controller]);
+      .controller('filmCollectionControler', ['localFilmService', 'lodash', controller]);
 
-   function controller(localFilmService, _, fstoFilmProvider) {
+   function controller(localFilmService, _) {
       var vm = angular.extend(this, { 
+        selectedFilm: null,
         removeFilm: removeFilm,
         switchList: switchList,
-        dropFilm: dropFilm
+        dropFilm: dropFilm,
+        selectFilm: selectFilm
       });
 
      	function removeFilm(film) {
@@ -28,6 +30,16 @@
         if (film && _.indexOf(vm.filmCollection, film) < index) index--;
 
         localFilmService.moveFilm(link, index, !film);
+      }
+
+      function selectFilm(film) {
+        vm.selectedFilm = film;
+        if (!film.details) {
+          localFilmService.getFilmDetails(film.link)
+            .then(function(response) {
+                film.details = response;
+            });
+        }
       }
   }
 })();

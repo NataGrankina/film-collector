@@ -3,8 +3,8 @@
 
     angular
         .module('filmCollector')
-        .factory('fstoFilmProvider', ['$http', 'htmlParser', 'lodash', service]);   
-        function service($http, htmlParser, _) {
+        .factory('fstoFilmProvider', ['$http', 'htmlParser', 'config', 'lodash', service]);   
+        function service($http, htmlParser, config, _) {
             var searchUrlTemplate = _.template('http://localhost:3000/search.aspx?f=quick_search&search=<%=searchText%>&section=video&subsection=serials');
             var foldersUrlTemplate = _.template('http://localhost:3000<%=filmLink%>?ajax&id=<%=id%>&download=1&view=1&view_embed=0&blocked=0&frame_hash=1fl404m&folder_quality=null&folder_lang=null&folder_translate=null&folder=<%=parentFolderId%>');
 
@@ -32,6 +32,14 @@
                     });
             }
 
+            function getFilm(filmLink) {
+                var url = 'http://localhost:3000' + filmLink;
+                return $http.get(url)
+                    .then(function(response) {
+                        return htmlParser.retrieveFilmInfo(response.data);                        
+                    });
+            }
+
             function retrieveId(link) {
                 var regex = /\/[a-zA-Z0-9]+-/;
                 var match = regex.exec(link)[0];
@@ -40,6 +48,7 @@
 
         	return {
         		get: get,
+                getFilm: getFilm,
                 getFoldersAndFiles: getFoldersAndFiles
         	};
         }

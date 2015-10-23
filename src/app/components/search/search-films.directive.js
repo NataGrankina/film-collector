@@ -9,7 +9,7 @@
 		return {
 			restrict: 'E',
 			scope: {},
-			templateUrl: 'app/film-collector/search/search-films.html',
+			templateUrl: 'app/components/search/search-films.html',
 			controller: 'searchFilmsController',
 			controllerAs: 'vm',
 			bindToController: true

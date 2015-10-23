@@ -1,0 +1,14 @@
+<div class="votes">
+	<i class="fa fa-thumbs-o-up success">{{ film.details.yesVotesCount }}</i>
+	<i class="fa fa-thumbs-o-down fail">{{ film.details.noVotesCount }}</i>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: {{ film.details.yesVotesPercentage }}%">
+  </div>
+  <div class="progress-bar progress-bar-danger" style="width: {{ film.details.noVotesPercentage }}%">
+  </div>
+</div>
+<div class="description">
+	{{ film.details.description }}
+</div>
+<fc-folders-and-files film-link="film.link" />

@@ -3,14 +3,14 @@
 
 	angular
 		.module('filmCollector')
-		.directive('fcWatchList', directive);
+		.directive('fcViewedList', directive);
 
 		function directive() {
 			return {
 				restrict: 'E',
 				scope: {},
-				templateUrl: 'app/film-collector/watch-list/watch-list.html',
-				controller: 'watchListController',
+				templateUrl: 'app/components/viewed-list/viewed-list.html',
+				controller: 'viewedListController',
 				controllerAs: 'vm',
 				bindToController: true
 			};

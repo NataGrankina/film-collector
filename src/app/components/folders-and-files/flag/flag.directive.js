@@ -3,15 +3,15 @@
 
 	angular
 		.module('filmCollector')
-		.directive('fcFilmItem', directive);
+		.directive('fcFlag', directive);
 
 	function directive() {
 		return {
 			restrict: 'E',
 			scope: {
-				film: '='
+				language: '='
 			},
-			templateUrl: 'app/film-collector/directives/film-item/film-item.html'
+			templateUrl: 'app/components/folders-and-files/flag/flag.html'
 		};
 	}
 })();

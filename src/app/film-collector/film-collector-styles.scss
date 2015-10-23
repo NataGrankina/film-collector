@@ -44,6 +44,19 @@ a {
             opacity: 1;
         }
     }
+    .success {
+        color: #479652;
+    } 
+    .fail {
+        color: #C3202D;
+    }
+    .description {
+        text-align: justify;
+        margin: 10px 0;
+    }
+    .votes {
+        margin-top: 10px;
+    }
 }
 
 .search-container {
@@ -76,7 +89,7 @@ a {
     .flag {
         width: 16px;
         height: 11px;
-        background:url(film-collector/flags/flags.png) no-repeat
+        background:url(../assets/images/flags/flags.png) no-repeat
     }
 
     .flag.flag-ru {

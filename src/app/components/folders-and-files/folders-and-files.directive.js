@@ -3,16 +3,16 @@
 
 	angular
 		.module('filmCollector')
-		.directive('fcFilmCollection', directive);
+		.directive('fcFoldersAndFiles', directive);
 
 	function directive() {
 		return {
 			restrict: 'E',
 			scope: {
-				filmCollection: '='
+				filmLink: '='
 			},
-			templateUrl: 'app/film-collector/directives/film-collection/film-collection.html',
-			controller: 'filmCollectionControler',
+			templateUrl: 'app/components/folders-and-files/folders-and-files.html',
+			controller: 'foldersAndFilesController',
 			controllerAs: 'vm',
 			bindToController: true
 		};

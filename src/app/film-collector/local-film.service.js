@@ -3,8 +3,8 @@
 
     angular
     .module('filmCollector')
-    .factory('localFilmService', ['$localStorage', '$rootScope', 'lodash', service]);
-    function service($localStorage, $rootScope, _) {
+    .factory('localFilmService', ['$localStorage', 'fstoFilmProvider', '$rootScope', 'lodash', service]);
+    function service($localStorage, fstoFilmProvider, $rootScope, _) {
         $localStorage.films = $localStorage.films || [];
 
         function notifyFilmCollectionChanged() {
@@ -20,6 +20,15 @@
             notifyFilmCollectionChanged();
             return true;
     	}
+
+        function getFilmDetails(link) {
+            return fstoFilmProvider.getFilm(link)
+                .then(function(response) {
+                    var film = getFilm(link);
+                    film.details = response;
+                    return film.details;
+                });
+        }
 
         function getWatchList() {
             return _.filter($localStorage.films, function(film) {
@@ -42,10 +51,7 @@
         }
 
         function moveFilm(link, newIndexInList, switchList) {
-            var film = _.find($localStorage.films, function(item) {
-                return item.link === link;
-            });
-
+            var film = getFilm(link);
             remove(link);
 
             if (switchList) film.isViewed = !film.isViewed;
@@ -63,7 +69,14 @@
             notifyFilmCollectionChanged();
         }
 
+        function getFilm(link) {
+            return _.find($localStorage.films, function(film) {
+                return film.link === link;
+            });
+        }
+
     	return {
+            getFilmDetails: getFilmDetails,
     		addToWatchList: addToWatchList,
             getWatchList: getWatchList,
             getViewedList: getViewedList,
