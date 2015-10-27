@@ -3,9 +3,9 @@
 
    angular
       .module('filmCollector')
-      .controller('searchFilmsController', ['fstoFilmProvider', 'localFilmService', controller]);
+      .controller('searchFilmsController', ['fstoFilmService', 'localFilmService', controller]);
 
-    function controller(fstoFilmProvider, localFilmService) {
+    function controller(fstoFilmService, localFilmService) {
 
       var vm = angular.extend(this, { 
         searchText: '',
@@ -21,7 +21,7 @@
           return;
         }
         
-        fstoFilmProvider.get(vm.searchText)
+        fstoFilmService.get(vm.searchText)
           .then(function(response) {
             vm.searchResults = response;
           });

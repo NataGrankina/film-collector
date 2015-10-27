@@ -1,11 +1,10 @@
 <div class="list-group" 
-	dnd-list="vm.filmCollection" 
-	dnd-drop="vm.dropFilm(item.link, index)">	
+	fc-drop="vm.dropFilm(item.link)">	
 	<a href="#" 
 		ng-repeat="film in vm.filmCollection" 
 		class="list-group-item"
-		dnd-draggable="film" 
-		dnd-effect-allowed="move"
+		fc-draggable="film" 
+		fc-effect-allowed="move"
 		ng-click="vm.selectFilm(film)">
 		<i class="fa fa-times fa-2 film-delete" ng-click="vm.removeFilm(film)"></i> 
 		<i class="fa fa-eye fa-2 film-eye" ng-hide="film.isViewed" ng-click="vm.switchList(film.link)"></i>
@@ -17,5 +16,4 @@
 			<fc-film-item-details film="film" />
 		</div>  	
   	</a>
-  	<a class="dndPlaceholder list-group-item"></a>
 </div>

@@ -13,11 +13,7 @@
 
 div[dnd-list] {
     min-height: 100px;
-    background-color: rgb(221, 221, 221);
-
-    .dndDraggingSource {
-        display: none;
-    }
+    background-color: rgb(221, 221, 221);    
 
     .dndPlaceholder {
         background-color: rgb(221, 221, 221);

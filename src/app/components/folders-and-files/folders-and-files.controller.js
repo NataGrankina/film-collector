@@ -3,9 +3,9 @@
 
    angular
       .module('filmCollector')
-      .controller('foldersAndFilesController', ['fstoFilmProvider', controller]);
+      .controller('foldersAndFilesController', ['fstoFilmService', controller]);
 
-   function controller(fstoFilmProvider) {
+   function controller(fstoFilmService) {
       var vm = angular.extend(this, { 
         toggle: toggle,
         isExpanded: false,
@@ -25,7 +25,7 @@
         
         var root = node || vm;
         if (!root.children) {
-          fstoFilmProvider.getFoldersAndFiles(vm.filmLink, node ? node.id : 0)
+          fstoFilmService.getFoldersAndFiles(vm.filmLink, node ? node.id : 0)
             .then(function(response) {
               root.children = response;
             });

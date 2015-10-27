@@ -19,17 +19,15 @@
      	}
 
       function switchList(link) {
-        localFilmService.moveFilm(link, 0, true);
+        localFilmService.moveFilm(link, true);
       }
 
-      function dropFilm(link, index) {
+      function dropFilm(link) {
         var film = _.find(vm.filmCollection, function(item) {
             return item.link === link;
         });
 
-        if (film && _.indexOf(vm.filmCollection, film) < index) index--;
-
-        localFilmService.moveFilm(link, index, !film);
+        localFilmService.moveFilm(link, !film);
       }
 
       function selectFilm(film) {

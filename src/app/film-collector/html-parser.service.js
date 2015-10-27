@@ -7,7 +7,7 @@
         function service($document, _, config) {
             function retrieveFilmInfo(html) {
                 var details = {};
-                details.description = ($("p.item-decription.full", html).first() || $("p.item-decription.short", html).first()).text();
+                details.description = $($("p.item-decription.full", html)[0] || $("p.item-decription", html)[0]).text();
                 details.yesVotesCount = parseInt($("div.b-tab-item__vote-value.m-tab-item__vote-value_type_yes", html).first().text());
                 details.noVotesCount = parseInt($("div.b-tab-item__vote-value.m-tab-item__vote-value_type_no", html).first().text());
                 var votesCount = details.yesVotesCount + details.noVotesCount;

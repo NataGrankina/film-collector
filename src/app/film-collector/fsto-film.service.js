@@ -3,7 +3,7 @@
 
     angular
         .module('filmCollector')
-        .factory('fstoFilmProvider', ['$http', 'htmlParser', 'config', 'lodash', service]);   
+        .factory('fstoFilmService', ['$http', 'htmlParser', 'config', 'lodash', service]);   
         function service($http, htmlParser, config, _) {
             var searchUrlTemplate = _.template('http://localhost:3000/search.aspx?f=quick_search&search=<%=searchText%>&section=video&subsection=serials');
             var foldersUrlTemplate = _.template('http://localhost:3000<%=filmLink%>?ajax&id=<%=id%>&download=1&view=1&view_embed=0&blocked=0&frame_hash=1fl404m&folder_quality=null&folder_lang=null&folder_translate=null&folder=<%=parentFolderId%>');
